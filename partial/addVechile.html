@@ -1,0 +1,29 @@
+<div class="row form-input">
+	<div ng-click="delete()" class="button">Delete</div>
+	<div class="col-sm-3">
+		<span class="block"><label>Type</label></span>
+		<select ng-model="vType" ng-options="o.name for o in optionsType">
+			<option value="" disabled selected>--Select Type--</option>
+		</select>
+	</div>
+	<div class="col-sm-3">
+		<span class="block"><label>Make</label></span>
+		<input type="text" ng-model="vMake" placeholder = "Make"/>
+	</div>
+	<div class="col-sm-3">
+		<span class="block"><label>Model</label></span>
+		<input type="text" ng-model='vModel' placeholder = "Model" />
+	</div>
+	<div class="col-sm-1">			
+		<span class="block"><label></label></span>
+		<button type="submit" ng-click='addVechile()' class="glyphicon glyphicon-plus"></button>
+	</div>
+	<div class="col-sm-2"></div>
+</div>
+<div class="row form-input">
+	<div class="col-sm-6"></div>
+	<div id="searchinput" class="col-sm-4 vinput-group" >
+		<input type="text" ng-model='searchWord' ng-minlength="3" aria-describedby="search-icon"/>
+		<!--span class="glyphicon glyphicon-search input-group-addon" id="search-icon"></span-->
+	</div>
+</div>
