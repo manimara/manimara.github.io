@@ -1,0 +1,7 @@
+<table class="table">
+	<tr ng-repeat="vehicle in  getAllVechiles | filter : searchWord" ng-if="vehicle.type">
+		<td>{{vehicle.type}}</td>
+		<td>{{vehicle.make}}</td>
+		<td>{{vehicle.model}}</td>
+	</tr>	
+</table>
