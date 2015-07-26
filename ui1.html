@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ness Exercise using Angular js</title>
+	<script type="text/javascript" src="//code.angularjs.org/1.4.3/angular.js"></script>
+	<script type="text/javascript" src="appui1.js"></script>
+	<link  rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
+	<style type="text/css">
+		.form-input input, .form-input select{
+			width: 100%;
+			height: 26px;
+		}
+		.form-input span.block
+		{
+			display: block;
+		}
+		#searchinput{
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body ng-app = "NessModule" class="container">
+	<div ng-controller="todoCtrl" class="panel panel-default">
+		<div class="panel-heading">Vechile Search</div>
+		<div class="panel-body">
+			<div class="row form-input">
+				<div ng-click="delete()" class="button">Delete</div>
+				<div class="col-sm-3">
+					<span class="block"><label>Type</label></span>
+					<select ng-model="vType" ng-options="o.name for o in optionsType">
+						<option value="" disabled selected>--Select Type--</option>
+					</select>
+				</div>
+				<div class="col-sm-3">
+					<span class="block"><label>Make</label></span>
+					<input type="text" ng-model="vMake" placeholder = "Make"/>
+				</div>
+				<div class="col-sm-3">
+					<span class="block"><label>Model</label></span>
+					<input type="text" ng-model='vModel' placeholder = "Model" />
+				</div>
+				<div class="col-sm-1">			
+					<span class="block"><label></label></span>
+					<button type="submit" ng-click='addVechile()' class="glyphicon glyphicon-plus"></button>
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+			<div class="row form-input">
+				<div class="col-sm-6"></div>
+				<div id="searchinput" class="col-sm-4">
+					<input type="text" ng-model='searchWord' ng-minlength="3"/>
+				</div>
+				<!--div class="col-sm-2"></div-->
+			</div>			
+			<div >
+				<table class="table">
+					<tr ng-repeat="vehicle in  getAllVechiles | filter : searchWord" ng-if="vehicle.type">
+						<td>{{vehicle.type}}</td>
+						<td>{{vehicle.make}}</td>
+						<td>{{vehicle.model}}</td>
+					</tr>	
+				</table>
+			</div>
+			<div class="row">
+				<div class="col-sm-10"></div>			
+				<div class="col-sm-1 btn btn-default" ng-click="exportToJson()">Json</div>
+				<div class="col-sm-1"></div>			
+			</div>
+			<div class="row" ng-if="showJson">
+				<pre>{{getAllVechiles || json}}</pre>
+				<div class="btn btn-default" ng-click="hideJson()">Hide</div>
+			</div>			
+		</div>
+
+		</div>	
+	</div>
+</body>
+</html>
